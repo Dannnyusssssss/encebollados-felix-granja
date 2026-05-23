@@ -102,12 +102,24 @@
     <header>
         <nav>
             <div class="logo">🧅 ENCEBOLLADOS La Félix Granja</div>
+            
+            <!-- CHECKBOX OCULTO (controla el menú) -->
+            <input type="checkbox" id="menu-check" class="menu-check">
+            <label for="menu-check" class="menu-hamburguesa" aria-label="Abrir menú">
+                <span class="linea linea-1"></span>
+                <span class="linea linea-2"></span>
+                <span class="linea linea-3"></span>
+            </label>
+            
+            <!-- MENÚ DE NAVEGACIÓN -->
             <ul class="menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#menu">Menú</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#inicio" onclick="cerrarMenu()">Inicio</a></li>
+                <li><a href="#menu" onclick="cerrarMenu()">Menú</a></li>
+                <li><a href="#nosotros" onclick="cerrarMenu()">Nosotros</a></li>
+                <li><a href="#testimonios" onclick="cerrarMenu()">Testimonios</a></li>
+                <li><a href="#contacto" onclick="cerrarMenu()">Contacto</a></li>
             </ul>
+            
             <!-- BOTÓN DE TEMA OSCURO/CLARO -->
             <button class="boton-tema" id="botonTema" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">
                 🌙
@@ -224,6 +236,10 @@
     
     <!-- SCRIPT PARA CAMBIO DE TEMA -->
     <script>
+        // Función para cerrar el menú hamburguesa al hacer clic en un enlace
+        function cerrarMenu() {
+            document.getElementById('menu-check').checked = false;
+        }
         const botonTema = document.getElementById('botonTema');
         const body = document.body;
         

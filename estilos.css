@@ -37,8 +37,7 @@ nav {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap;
-    gap: 15px;
+    position: relative;
 }
 
 .logo {
@@ -46,8 +45,47 @@ nav {
     font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: 1px;
+    z-index: 101;
 }
 
+/* Oculta el checkbox */
+.menu-check {
+    display: none;
+}
+
+/* Botón hamburguesa (visible solo en móvil) */
+.menu-hamburguesa {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 101;
+    padding: 5px;
+}
+
+.menu-hamburguesa .linea {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Animación de las rayitas a X */
+.menu-check:checked ~ .menu-hamburguesa .linea-1 {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-check:checked ~ .menu-hamburguesa .linea-2 {
+    opacity: 0;
+}
+
+.menu-check:checked ~ .menu-hamburguesa .linea-3 {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menú de navegación */
 .menu {
     list-style: none;
     display: flex;
@@ -236,91 +274,6 @@ nav {
     background-color: #fafafa;
     border-radius: 15px;
     padding: 30px;
-}
-
-/* ========================================
-   SECCIÓN TESTIMONIOS
-   ======================================== */
-
-.seccion-testimonios {
-    padding: 80px 40px;
-    background-color: #fafafa;
-    text-align: center;
-}
-
-.seccion-testimonios h2 {
-    font-size: 2.5rem;
-    color: #1a1a1a;
-    margin-bottom: 10px;
-}
-
-.seccion-testimonios .subtitulo {
-    color: #666;
-    margin-bottom: 50px;
-    font-size: 1.1rem;
-}
-
-.testimonios-contenedor {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.testimonio {
-    background: white;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    text-align: left;
-    transition: transform 0.3s;
-}
-
-.testimonio:hover {
-    transform: translateY(-5px);
-}
-
-.testimonio-estrellas {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-}
-
-.testimonio p {
-    color: #444;
-    font-style: italic;
-    line-height: 1.7;
-    margin-bottom: 20px;
-    font-size: 1rem;
-}
-
-.testimonio-autor {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-top: 1px solid #eee;
-    padding-top: 15px;
-}
-
-.autor-avatar {
-    font-size: 2rem;
-    background: #f0f0f0;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.testimonio-autor strong {
-    display: block;
-    color: #1a1a1a;
-}
-
-.testimonio-autor span {
-    font-size: 0.85rem;
-    color: #888;
 }
 
 /* ========================================
@@ -664,7 +617,7 @@ footer {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    margin-left: 5px;
+    flex-shrink: 0;
 }
 
 .boton-tema:hover {
@@ -689,14 +642,66 @@ body.dark-mode .boton-tema:hover {
 @media (max-width: 768px) {
     
     nav {
-        flex-direction: column;
-        gap: 15px;
+        flex-wrap: wrap;
     }
     
+    /* Mostrar botón hamburguesa */
+    .menu-hamburguesa {
+        display: flex;
+        order: 2;
+    }
+    
+    .boton-tema {
+        order: 1;
+        margin-left: auto;
+        margin-right: 15px;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+        max-width: 60%;
+    }
+    
+    /* Menú oculto por defecto en móvil */
     .menu {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #1a1a1a;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        margin-top: 15px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+    
+    .menu li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .menu a {
+        display: block;
+        padding: 15px 25px;
+        color: white;
+        text-align: left;
+    }
+    
+    .menu a:hover {
+        background-color: rgba(255,107,53,0.1);
+    }
+    
+    /* Mostrar menú cuando el checkbox está activado */
+    .menu-check:checked ~ .menu {
+        display: flex;
     }
     
     .heroe h1 {
