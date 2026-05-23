@@ -9,7 +9,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en el menú */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -37,6 +37,8 @@ nav {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .logo {
@@ -50,6 +52,8 @@ nav {
     list-style: none;
     display: flex;
     gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .menu a {
@@ -160,6 +164,17 @@ nav {
     margin-bottom: 20px;
 }
 
+.tarjeta-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.tarjeta:hover .tarjeta-imagen img {
+    transform: scale(1.1);
+}
+
 .tarjeta h3 {
     color: #1a1a1a;
     margin-bottom: 10px;
@@ -224,150 +239,92 @@ nav {
 }
 
 /* ========================================
-   SECCIÓN CONTACTO
+   SECCIÓN TESTIMONIOS
    ======================================== */
 
-.seccion-contacto {
+.seccion-testimonios {
     padding: 80px 40px;
-    background-color: #1a1a1a;
-    color: white;
+    background-color: #fafafa;
     text-align: center;
 }
 
-.seccion-contacto h2 {
+.seccion-testimonios h2 {
     font-size: 2.5rem;
-    margin-bottom: 50px;
-    color: #ff6b35;
+    color: #1a1a1a;
+    margin-bottom: 10px;
 }
 
-.contacto-info {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
+.seccion-testimonios .subtitulo {
+    color: #666;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+.testimonios-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap;
 }
 
-.info-item h3 {
-    color: #ff6b35;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-
-.info-item p {
-    color: #ccc;
-    line-height: 1.8;
-}
-
-/* ========================================
-   PIE DE PÁGINA
-   ======================================== */
-
-footer {
-    background-color: #111;
-    color: #888;
-    text-align: center;
+.testimonio {
+    background: white;
+    border-radius: 15px;
     padding: 30px;
-    font-size: 0.9rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: left;
+    transition: transform 0.3s;
 }
 
-footer p {
-    margin-bottom: 5px;
+.testimonio:hover {
+    transform: translateY(-5px);
 }
 
-/* ========================================
-   RESPONSIVE (MÓVILES Y TABLETS)
-   ======================================== */
-
-@media (max-width: 768px) {
-    
-    nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .menu {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .heroe h1 {
-        font-size: 2.2rem;
-    }
-    
-    .heroe p {
-        font-size: 1rem;
-    }
-    
-    .seccion-menu,
-    .seccion-nosotros,
-    .seccion-contacto {
-        padding: 50px 20px;
-    }
-    
-    .nosotros-contenido {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .nosotros-imagen {
-        font-size: 6rem;
-        padding: 20px;
-    }
-    
-    .contacto-info {
-        flex-direction: column;
-        gap: 30px;
-    }
-    
-    .tarjetas-menu {
-        grid-template-columns: 1fr;
-    }
+.testimonio-estrellas {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
 }
-/* ========================================
-   BOTÓN FLOTANTE DE WHATSAPP
-   ======================================== */
 
-.whatsapp-flotante {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background-color: #25D366;
-    color: white;
-    width: 60px;
-    height: 60px;
+.testimonio p {
+    color: #444;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.testimonio-autor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.autor-avatar {
+    font-size: 2rem;
+    background: #f0f0f0;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-    z-index: 999;
-    transition: transform 0.3s, box-shadow 0.3s;
-    animation: latido 2s infinite;
 }
 
-.whatsapp-flotante:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+.testimonio-autor strong {
+    display: block;
+    color: #1a1a1a;
 }
 
-.whatsapp-icono {
-    font-size: 28px;
+.testimonio-autor span {
+    font-size: 0.85rem;
+    color: #888;
 }
 
-@keyframes latido {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-}
 /* ========================================
-   MAPA DE GOOGLE
+   SECCIÓN CONTACTO
    ======================================== */
 
 .seccion-contacto {
@@ -421,6 +378,64 @@ footer p {
     display: block;
     width: 100%;
 }
+
+/* ========================================
+   PIE DE PÁGINA
+   ======================================== */
+
+footer {
+    background-color: #111;
+    color: #888;
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+/* ========================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ======================================== */
+
+.whatsapp-flotante {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: latido 2s infinite;
+}
+
+.whatsapp-flotante:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-icono {
+    font-size: 28px;
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
 /* ========================================
    VARIABLES DE COLOR (Tema Claro por defecto)
    ======================================== */
@@ -633,16 +648,6 @@ footer {
 }
 
 /* ========================================
-   MODO OSCURO AUTOMÁTICO (si no hay preferencia guardada)
-   ======================================== */
-
-@media (prefers-color-scheme: dark) {
-    body:not(.light-mode):not(.dark-mode-manual) {
-        /* Solo aplica si el usuario no ha elegido manualmente */
-    }
-}
-
-/* ========================================
    BOTÓN DE TEMA (SOL/LUNA)
    ======================================== */
 
@@ -663,7 +668,7 @@ footer {
 }
 
 .boton-tema:hover {
-    border-color: var(--color-precio);
+    border-color: #ff6b35;
     background: rgba(255, 107, 53, 0.2);
     transform: rotate(15deg);
 }
@@ -675,4 +680,57 @@ body.dark-mode .boton-tema {
 body.dark-mode .boton-tema:hover {
     border-color: #ff6b35;
     background: rgba(255, 107, 53, 0.3);
+}
+
+/* ========================================
+   RESPONSIVE (MÓVILES Y TABLETS)
+   ======================================== */
+
+@media (max-width: 768px) {
+    
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .menu {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .heroe h1 {
+        font-size: 2.2rem;
+    }
+    
+    .heroe p {
+        font-size: 1rem;
+    }
+    
+    .seccion-menu,
+    .seccion-nosotros,
+    .seccion-contacto,
+    .seccion-testimonios {
+        padding: 50px 20px;
+    }
+    
+    .nosotros-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nosotros-imagen {
+        font-size: 6rem;
+        padding: 20px;
+    }
+    
+    .contacto-info {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .tarjetas-menu,
+    .testimonios-contenedor {
+        grid-template-columns: 1fr;
+    }
 }
