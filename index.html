@@ -35,6 +35,22 @@
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <header>
+                <nav>
+                    <div class="logo">🧅 ENCEBOLLADOS La Félix Granja</div>
+                    <ul class="menu">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#menu">Menú</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                    <!-- BOTÓN DE TEMA OSCURO/CLARO -->
+                    <button class="boton-tema" id="botonTema" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">
+                        🌙
+                    </button>
+                </nav>
+            </header>       
         </nav>
     </header>
 
@@ -147,5 +163,63 @@
     <a href="https://wa.me/593959295212?text=Hola%20quiero%20hacer%20un%20pedido%20de%20encebollado" class="whatsapp-flotante" target="_blank" rel="noopener">
     <span class="whatsapp-icono">💬</span>
     </a>
+    
+    <!-- SCRIPT PARA CAMBIO DE TEMA -->
+    <script>
+        const botonTema = document.getElementById('botonTema');
+        const body = document.body;
+        
+        // Función para actualizar el ícono del botón
+        function actualizarIcono() {
+            if (body.classList.contains('dark-mode')) {
+                botonTema.textContent = '☀️';
+            } else {
+                botonTema.textContent = '🌙';
+            }
+        }
+        
+        // Verificar si hay preferencia guardada en localStorage
+        const temaGuardado = localStorage.getItem('tema');
+        
+        if (temaGuardado === 'oscuro') {
+            body.classList.add('dark-mode');
+        } else if (temaGuardado === 'claro') {
+            body.classList.remove('dark-mode');
+        } else {
+            // Si no hay preferencia guardada, usar la del sistema
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                body.classList.add('dark-mode');
+            }
+        }
+        
+        // Actualizar el ícono al cargar la página
+        actualizarIcono();
+        
+        // Evento de clic en el botón
+        botonTema.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Guardar preferencia
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('tema', 'oscuro');
+            } else {
+                localStorage.setItem('tema', 'claro');
+            }
+            
+            actualizarIcono();
+        });
+        
+        // Escuchar cambios en la preferencia del sistema (si no hay elección manual)
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('tema')) {
+                if (e.matches) {
+                    body.classList.add('dark-mode');
+                } else {
+                    body.classList.remove('dark-mode');
+                }
+                actualizarIcono();
+            }
+        });
+    </script>
 </body>
 </html>

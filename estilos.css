@@ -421,3 +421,258 @@ footer p {
     display: block;
     width: 100%;
 }
+/* ========================================
+   VARIABLES DE COLOR (Tema Claro por defecto)
+   ======================================== */
+
+:root {
+    --color-fondo: #ffffff;
+    --color-fondo-seccion: #fafafa;
+    --color-texto: #333;
+    --color-texto-claro: #555;
+    --color-texto-secundario: #666;
+    --color-titulo: #1a1a1a;
+    --color-tarjeta: #ffffff;
+    --color-sombra: rgba(0, 0, 0, 0.1);
+    --color-sombra-hover: rgba(0, 0, 0, 0.15);
+    --color-borde-testimonio: #eee;
+    --color-avatar-fondo: #f0f0f0;
+    --color-footer: #111;
+    --color-footer-texto: #888;
+    --color-menu-fondo: #1a1a1a;
+    --color-menu-texto: white;
+    --color-precio: #ff6b35;
+    --color-boton: #ff6b35;
+    --color-boton-hover: #e55a25;
+    --color-heroe-overlay: rgba(0, 0, 0, 0.6);
+    --color-nosotros-imagen: #fafafa;
+    --color-testimonio-texto: #444;
+    --color-testimonio-autor: #1a1a1a;
+    --color-testimonio-autor-cargo: #888;
+    --color-contacto-fondo: #1a1a1a;
+    --color-contacto-texto: #ccc;
+    --color-mapa-sombra: rgba(0, 0, 0, 0.3);
+    --transicion-tema: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* ========================================
+   TEMA OSCURO (se activa con clase .dark-mode)
+   ======================================== */
+
+body.dark-mode {
+    --color-fondo: #121212;
+    --color-fondo-seccion: #1a1a1a;
+    --color-texto: #e0e0e0;
+    --color-texto-claro: #bbb;
+    --color-texto-secundario: #aaa;
+    --color-titulo: #ffffff;
+    --color-tarjeta: #2a2a2a;
+    --color-sombra: rgba(0, 0, 0, 0.4);
+    --color-sombra-hover: rgba(0, 0, 0, 0.6);
+    --color-borde-testimonio: #444;
+    --color-avatar-fondo: #333;
+    --color-footer: #000;
+    --color-footer-texto: #777;
+    --color-menu-fondo: #000;
+    --color-menu-texto: #e0e0e0;
+    --color-heroe-overlay: rgba(0, 0, 0, 0.8);
+    --color-nosotros-imagen: #2a2a2a;
+    --color-testimonio-texto: #ccc;
+    --color-testimonio-autor: #e0e0e0;
+    --color-testimonio-autor-cargo: #999;
+    --color-contacto-fondo: #0a0a0a;
+    --color-contacto-texto: #aaa;
+    --color-mapa-sombra: rgba(0, 0, 0, 0.6);
+}
+
+/* ========================================
+   APLICAR VARIABLES A LOS ELEMENTOS
+   ======================================== */
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    transition: var(--transicion-tema);
+}
+
+header {
+    background-color: var(--color-menu-fondo);
+    transition: var(--transicion-tema);
+}
+
+.menu a {
+    color: var(--color-menu-texto);
+}
+
+.heroe {
+    background: linear-gradient(var(--color-heroe-overlay), var(--color-heroe-overlay)), url('https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1351&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.seccion-menu {
+    background-color: var(--color-fondo-seccion);
+    transition: var(--transicion-tema);
+}
+
+.seccion-menu h2 {
+    color: var(--color-titulo);
+}
+
+.subtitulo {
+    color: var(--color-texto-secundario);
+    transition: var(--transicion-tema);
+}
+
+.tarjeta {
+    background: var(--color-tarjeta);
+    box-shadow: 0 5px 20px var(--color-sombra);
+    transition: transform 0.3s, box-shadow 0.3s, var(--transicion-tema);
+}
+
+.tarjeta:hover {
+    box-shadow: 0 10px 30px var(--color-sombra-hover);
+}
+
+.tarjeta h3 {
+    color: var(--color-titulo);
+}
+
+.tarjeta p {
+    color: var(--color-texto-secundario);
+}
+
+.precio {
+    color: var(--color-precio);
+}
+
+.seccion-nosotros {
+    background-color: var(--color-fondo);
+    transition: var(--transicion-tema);
+}
+
+.nosotros-texto h2 {
+    color: var(--color-titulo);
+}
+
+.nosotros-texto p {
+    color: var(--color-texto-claro);
+}
+
+.nosotros-imagen {
+    background-color: var(--color-nosotros-imagen);
+    transition: var(--transicion-tema);
+}
+
+.boton {
+    background-color: var(--color-boton);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.boton:hover {
+    background-color: var(--color-boton-hover);
+}
+
+/* Testimonios */
+.seccion-testimonios {
+    background-color: var(--color-fondo-seccion);
+    transition: var(--transicion-tema);
+}
+
+.seccion-testimonios h2 {
+    color: var(--color-titulo);
+}
+
+.testimonio {
+    background: var(--color-tarjeta);
+    box-shadow: 0 5px 20px var(--color-sombra);
+    transition: transform 0.3s, var(--transicion-tema);
+}
+
+.testimonio p {
+    color: var(--color-testimonio-texto);
+}
+
+.testimonio-autor {
+    border-top: 1px solid var(--color-borde-testimonio);
+    transition: var(--transicion-tema);
+}
+
+.testimonio-autor strong {
+    color: var(--color-testimonio-autor);
+}
+
+.testimonio-autor span {
+    color: var(--color-testimonio-autor-cargo);
+}
+
+.autor-avatar {
+    background: var(--color-avatar-fondo);
+    transition: var(--transicion-tema);
+}
+
+/* Contacto */
+.seccion-contacto {
+    background-color: var(--color-contacto-fondo);
+    transition: var(--transicion-tema);
+}
+
+.info-item p {
+    color: var(--color-contacto-texto);
+}
+
+.mapa-contenedor {
+    box-shadow: 0 5px 20px var(--color-mapa-sombra);
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-footer);
+    color: var(--color-footer-texto);
+    transition: var(--transicion-tema);
+}
+
+/* ========================================
+   MODO OSCURO AUTOMÁTICO (si no hay preferencia guardada)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-mode):not(.dark-mode-manual) {
+        /* Solo aplica si el usuario no ha elegido manualmente */
+    }
+}
+
+/* ========================================
+   BOTÓN DE TEMA (SOL/LUNA)
+   ======================================== */
+
+.boton-tema {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+}
+
+.boton-tema:hover {
+    border-color: var(--color-precio);
+    background: rgba(255, 107, 53, 0.2);
+    transform: rotate(15deg);
+}
+
+body.dark-mode .boton-tema {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .boton-tema:hover {
+    border-color: #ff6b35;
+    background: rgba(255, 107, 53, 0.3);
+}
